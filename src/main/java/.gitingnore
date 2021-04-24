@@ -1,0 +1,89 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@fabriany 
+spring-projects
+/
+spring-boot
+3.5k
+54.8k33.5k
+Code
+Issues
+494
+Pull requests
+22
+Actions
+Projects
+Wiki
+Security
+Insights
+spring-boot/.gitignore
+@philwebb
+philwebb Merge branch '2.2.x' into 2.3.x
+…
+Latest commit 45275e6 on 14 Sep 2020
+ History
+ 10 contributors
+@philwebb@dsyer@gregturn@rajadilipkolli@isopov@wilkinsona@runningcode@mbhave@mathieufortin01@izeye
+43 lines (43 sloc)  446 Bytes
+  
+*#
+*.iml
+*.ipr
+*.iws
+*.jar
+*.sw?
+*~
+.#*
+.*.md.html
+.DS_Store
+.attach_pid*
+.classpath
+.factorypath
+.gradle
+.idea
+.metadata
+.project
+.recommenders
+.settings
+.springBeans
+.vscode
+/code
+MANIFEST.MF
+_site/
+activemq-data
+bin
+build
+!/**/src/**/bin
+!/**/src/**/build
+build.log
+dependency-reduced-pom.xml
+dump.rdb
+interpolated*.xml
+lib/
+manifest.yml
+out
+overridedb.*
+target
+transaction-logs
+.flattened-pom.xml
+secrets.yml
+.gradletasknamecache
+.sts4-cache
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
