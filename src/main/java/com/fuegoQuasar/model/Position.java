@@ -1,22 +1,22 @@
 package com.fuegoQuasar.model;
 
-public class CordenadasDTO {
+public class Position {
 	
 	public double x;
 	public double y;
 	
-	public double getX() {
-		return x;
-	}
-	public void setX(double x) {
+	public Position(double x, double y) {
+		super();
 		this.x = x;
-	}
-	public double getY() {
-		return y;
-	}
-	public void setY(double y) {
 		this.y = y;
 	}
 	
+	public double getX() {
+		return x;
+	}
 	
+	public double getY() {
+		return y;
+	}
+
 }
