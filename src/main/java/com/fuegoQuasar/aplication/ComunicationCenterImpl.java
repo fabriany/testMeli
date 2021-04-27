@@ -3,9 +3,7 @@ package com.fuegoQuasar.aplication;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.fuegoQuasar.model.Decoder;
 import com.fuegoQuasar.model.Location;
@@ -60,7 +58,6 @@ public class ComunicationCenterImpl implements ComunicationCenter {
 	}
 
 	@Override
-	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public Response getLocationMessageSplit() {
 
 		
