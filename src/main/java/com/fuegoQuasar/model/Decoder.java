@@ -2,25 +2,61 @@ package com.fuegoQuasar.model;
 
 public class Decoder {
 
-
 	public String getMessage(String[] menssageSato, String[] menssageKenobi, String[] menssageSkywalker) {
 		
-		String[] menssage = new String[5];;
+		int sizeMessage = biggerNumber(new int[]{ menssageSato.length, menssageKenobi.length, menssageSkywalker.length});
+		String[] menssage = new String[sizeMessage];;
 		
 		for (int i = 0 ; i < menssageSato.length; i ++ ) {
 			
-			menssage[i] = !menssageSato[i].equals(" ") ? menssageSato[i] : !menssageKenobi[i].equals(" ") ? menssageKenobi[i] : !menssageSkywalker[i].equals(" ")  ? menssageSkywalker[i] : " ";
+			menssage[i] = validateMessage(menssageSato, i) ? menssageSato[i] : validateMessage(menssageKenobi, i) ? 
+							menssageKenobi[i] : validateMessage(menssageSkywalker, i) ? menssageSkywalker[i] : " ";
 			
 		}
 		return toString(menssage);
 	}
 	
-	private String toString(String[] messages) {
-		String message = "";
-		for (String data : messages) {
-			message = message + " " +  data;
+	private int biggerNumber(int[] sizes) {
+		
+		int[] numeros = sizes;
+		int mayor = numeros[0];
+		for (int x = 1; x < numeros.length; x++) {
+			if (numeros[x] > mayor) {
+				mayor = numeros[x];
+			}
 		}
-		return message;
+		
+		return mayor;
+		
 	}
+	
+	private boolean validateMessage(String[] message, int position) {
+		
+		if (message.length > position) {
+			if (!message[position].equals(" ")) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	private String toString(String[] messages) {
+		
+		StringBuffer message = new StringBuffer();
+		int cont = 1;
+		for (String data : messages) {
+			message.append(data);
+			if (cont != messages.length) {
+				message.append(" ");
+				cont++;
+			}
+		}
+		
+		return message.toString();
+		
+	}
+	
+
 
 }

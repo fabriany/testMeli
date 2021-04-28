@@ -29,8 +29,17 @@ public class Response {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
 
 
-	
+	 public boolean equals(Response response) {
+		 
+		 if (this.position.x == response.position.x && this.position.y == response.position.y) {
+			if (this.message.equals(response.message)) {
+				return true;
+			}
+		 }
+		 
+		 return false;
+		
+	 }
 }

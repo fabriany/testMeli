@@ -25,7 +25,4 @@ public class SateliteData{
 		this.message = message;
 	}
 	
-	
-	
-
 }

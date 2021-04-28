@@ -28,21 +28,30 @@ public class ComunicationCenterImpl implements ComunicationCenter {
 		double distanceKenobi = 0;
 		double distanceSkywalker = 0;
 		
-		String[] messageSato = new String[5];
-		String[] messageKenobi = new String[5];
-		String[] messageSkywalker = new String[5];
+		String[] messageSato = null;
+		String[] messageKenobi = null;
+		String[] messageSkywalker = null;
+		
+		Response response = null;
 		
 		for (SateliteData sateliteData : sateliteDatas) {
 			
-			if (sateliteData.getName().equals(SATO)) {
-				distaceSato = sateliteData.getDistance();
-				messageSato = sateliteData.getMessage();
-			}else if (sateliteData.getName().equals(KENOBI)) {
-				distanceKenobi = sateliteData.getDistance();
-				messageKenobi = sateliteData.getMessage();
-			}else if (sateliteData.getName().equals(SKYWALKER)) {
-				distanceSkywalker = sateliteData.getDistance();
-				messageSkywalker = sateliteData.getMessage();
+			if (sateliteData != null && sateliteData.getName() != null && sateliteData.getMessage() != null) {	
+				if (sateliteData.getName().equals(SATO)) {
+					distaceSato = sateliteData.getDistance();
+					messageSato = new String[sateliteData.getMessage().length];
+					messageSato = sateliteData.getMessage();
+				}else if (sateliteData.getName().equals(KENOBI)) {
+					distanceKenobi = sateliteData.getDistance();
+					messageKenobi = new String[sateliteData.getMessage().length];
+					messageKenobi = sateliteData.getMessage();
+				}else if (sateliteData.getName().equals(SKYWALKER)) {
+					distanceSkywalker = sateliteData.getDistance();
+					messageSkywalker = new String[sateliteData.getMessage().length];
+					messageSkywalker = sateliteData.getMessage();
+				}
+			}else {
+				return null;
 			}
 		}
 		
@@ -51,8 +60,10 @@ public class ComunicationCenterImpl implements ComunicationCenter {
 		Position PositionNave = locator.getLocation(distaceSato,  distanceKenobi, distanceSkywalker);
 		String messageNave = decoder.getMessage(messageSato, messageKenobi, messageSkywalker);
 		
+		if (PositionNave != null && messageNave != null) {
+			response = new Response(PositionNave, messageNave);
+		}
 		
-		Response response = new Response(PositionNave, messageNave);
 		
 		return response;
 	}
