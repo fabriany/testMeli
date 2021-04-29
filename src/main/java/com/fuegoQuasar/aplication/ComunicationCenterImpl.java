@@ -3,26 +3,28 @@ package com.fuegoQuasar.aplication;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+import com.fuegoQuasar.Dto.ResponseTopsecretDto;
+import com.fuegoQuasar.Dto.SateliteDataDto;
 import com.fuegoQuasar.model.Decoder;
 import com.fuegoQuasar.model.Location;
 import com.fuegoQuasar.model.Position;
 
-@Repository
+@Service
 public class ComunicationCenterImpl implements ComunicationCenter {
 	
 	private static String SATO = "sato";
 	private static String KENOBI = "kenobi";
 	private static String SKYWALKER = "skywalker";
 	
-	private static SateliteData sateliteDataSato;
-	private static SateliteData sateliteDataKenobi;
-	private static SateliteData sateliteDataSkywalker;
+	private static SateliteDataDto sateliteDataSato;
+	private static SateliteDataDto sateliteDataKenobi;
+	private static SateliteDataDto sateliteDataSkywalker;
 	
 
 	@Override
-	public Response getLocationMessage(List<SateliteData> sateliteDatas) {
+	public ResponseTopsecretDto getLocationMessage(List<SateliteDataDto> sateliteDatas) {
 		
 		double distaceSato = 0;
 		double distanceKenobi = 0;
@@ -32,9 +34,9 @@ public class ComunicationCenterImpl implements ComunicationCenter {
 		String[] messageKenobi = null;
 		String[] messageSkywalker = null;
 		
-		Response response = null;
+		ResponseTopsecretDto response = null;
 		
-		for (SateliteData sateliteData : sateliteDatas) {
+		for (SateliteDataDto sateliteData : sateliteDatas) {
 			
 			if (sateliteData != null && sateliteData.getName() != null && sateliteData.getMessage() != null) {	
 				if (sateliteData.getName().equals(SATO)) {
@@ -55,13 +57,13 @@ public class ComunicationCenterImpl implements ComunicationCenter {
 			}
 		}
 		
-		Decoder decoder = new Decoder();
-		Location locator = new Location();
-		Position PositionNave = locator.getLocation(distaceSato,  distanceKenobi, distanceSkywalker);
-		String messageNave = decoder.getMessage(messageSato, messageKenobi, messageSkywalker);
+		Decoder decoder = new Decoder(messageSato, messageKenobi, messageSkywalker);
+		Location locator = new Location(distaceSato,  distanceKenobi, distanceSkywalker);
+		Position PositionNave = locator.getLocation();
+		String messageNave = decoder.getMessage();
 		
 		if (PositionNave != null && messageNave != null) {
-			response = new Response(PositionNave, messageNave);
+			response = new ResponseTopsecretDto(PositionNave, messageNave);
 		}
 		
 		
@@ -69,12 +71,12 @@ public class ComunicationCenterImpl implements ComunicationCenter {
 	}
 
 	@Override
-	public Response getLocationMessageSplit() {
+	public ResponseTopsecretDto getLocationMessageSplit() {
 
 		
 		if (sateliteDataSato != null && sateliteDataKenobi != null && sateliteDataSkywalker != null) {
 			
-			Response response = getLocationMessage(Arrays.asList(sateliteDataSato, sateliteDataKenobi, sateliteDataSkywalker));
+			ResponseTopsecretDto response = getLocationMessage(Arrays.asList(sateliteDataSato, sateliteDataKenobi, sateliteDataSkywalker));
 			return response;
 		}
 		
@@ -82,7 +84,7 @@ public class ComunicationCenterImpl implements ComunicationCenter {
 	}
 
 	@Override
-	public boolean setSateliteData(SateliteData sateliteData) {
+	public boolean setSateliteData(SateliteDataDto sateliteData) {
 
 		if (sateliteData != null) {
 			if (sateliteData.getName().equals(SATO)) {

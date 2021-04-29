@@ -1,6 +1,6 @@
-package com.fuegoQuasar.aplication;
+package com.fuegoQuasar.Dto;
 
-public class SateliteData{
+public class SateliteDataDto{
 	
 	private String name;
 	private double distance;
@@ -24,5 +24,4 @@ public class SateliteData{
 	public void setMessage(String[] message) {
 		this.message = message;
 	}
-	
 }

@@ -1,13 +1,23 @@
 package com.fuegoQuasar.model;
 
 public class Decoder {
+	
+	private String[] menssageSato;
+	private String[] menssageKenobi;
+	private String[] menssageSkywalker;
+	
+	public Decoder(String[] menssageSato, String[] menssageKenobi, String[] menssageSkywalker) {
+		this.menssageSato = menssageSato;
+		this.menssageKenobi = menssageKenobi;
+		this.menssageSkywalker = menssageSkywalker;
+	}
 
-	public String getMessage(String[] menssageSato, String[] menssageKenobi, String[] menssageSkywalker) {
+	public String getMessage() {
 		
 		int sizeMessage = biggerNumber(new int[]{ menssageSato.length, menssageKenobi.length, menssageSkywalker.length});
 		String[] menssage = new String[sizeMessage];;
 		
-		for (int i = 0 ; i < menssageSato.length; i ++ ) {
+		for (int i = 0 ; i < sizeMessage; i ++ ) {
 			
 			menssage[i] = validateMessage(menssageSato, i) ? menssageSato[i] : validateMessage(menssageKenobi, i) ? 
 							menssageKenobi[i] : validateMessage(menssageSkywalker, i) ? menssageSkywalker[i] : " ";

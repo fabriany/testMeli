@@ -2,12 +2,15 @@ package com.fuegoQuasar.aplication;
 
 import java.util.List;
 
+import com.fuegoQuasar.Dto.ResponseTopsecretDto;
+import com.fuegoQuasar.Dto.SateliteDataDto;
+
 public interface ComunicationCenter {
 
-	public Response getLocationMessage(List<SateliteData> sateliteDatas);
+	public ResponseTopsecretDto getLocationMessage(List<SateliteDataDto> sateliteDatas);
 	
-	public Response getLocationMessageSplit();
+	public ResponseTopsecretDto getLocationMessageSplit();
 	
-	public boolean setSateliteData(SateliteData sateliteData);
+	public boolean setSateliteData(SateliteDataDto sateliteData);
 	
 }

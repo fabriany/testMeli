@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import com.fuegoQuasar.Dto.ResponseTopsecretDto;
+import com.fuegoQuasar.Dto.SateliteDataDto;
 import com.fuegoQuasar.model.Position;
 
 public class ComunicationCenterImpleTest {
@@ -15,29 +17,29 @@ public class ComunicationCenterImpleTest {
 	@Test
 	public void getLocationMessageTest() {
 		
-		Response expectedResponse = new Response(new Position(-37.5, -325.0), "este es un mensaje secreto");
+		ResponseTopsecretDto expectedResponse = new ResponseTopsecretDto(new Position(-37.5, -325.0), "este es un mensaje secreto");
 
-		SateliteData sateliteDataSato = new SateliteData();
+		SateliteDataDto sateliteDataSato = new SateliteDataDto();
 		sateliteDataSato.setName("sato");
 		sateliteDataSato.setDistance(700);
 		String[ ] messagesato = {"este", " ", "un", " ", " "};
 		sateliteDataSato.setMessage(messagesato);
 		
-		SateliteData sateliteDataKenobi  = new SateliteData();
+		SateliteDataDto sateliteDataKenobi  = new SateliteDataDto();
 		sateliteDataKenobi.setName("kenobi");
 		sateliteDataKenobi.setDistance(500);
 		String[ ] messagekenobi = {"este", " ", " ", "mensaje", " "};
 		sateliteDataKenobi.setMessage(messagekenobi);
 		
-		SateliteData sateliteDataSkywalker  = new SateliteData();
+		SateliteDataDto sateliteDataSkywalker  = new SateliteDataDto();
 		sateliteDataSkywalker.setName("skywalker");
 		sateliteDataSkywalker.setDistance(300);
 		String[ ] messageSkywalker = {" ", "es", " ", " ", "secreto"};
 		sateliteDataSkywalker.setMessage(messageSkywalker); 
 		
-		List<SateliteData> satelites = List.of(sateliteDataSato, sateliteDataKenobi, sateliteDataSkywalker);
+		List<SateliteDataDto> satelites = List.of(sateliteDataSato, sateliteDataKenobi, sateliteDataSkywalker);
 		
-		Response response = centerSrv.getLocationMessage(satelites);
+		ResponseTopsecretDto response = centerSrv.getLocationMessage(satelites);
 		
 		assertTrue(response.equals(expectedResponse));
 	}
@@ -45,29 +47,29 @@ public class ComunicationCenterImpleTest {
 	@Test
 	public void getLocationMessageTest2() {
 		
-		Response expectedResponse = new Response(new Position(-137.5, 75.0), "messaje para la prueba de Meli");
+		ResponseTopsecretDto expectedResponse = new ResponseTopsecretDto(new Position(-137.5, 75.0), "messaje para la prueba de Meli");
 
-		SateliteData sateliteDataSato = new SateliteData();
+		SateliteDataDto sateliteDataSato = new SateliteDataDto();
 		sateliteDataSato.setName("sato");
 		sateliteDataSato.setDistance(600);
 		String[ ] messagesato = {" ", " ", "la", " ", " ", "Meli"};
 		sateliteDataSato.setMessage(messagesato);
 		
-		SateliteData sateliteDataKenobi  = new SateliteData();
+		SateliteDataDto sateliteDataKenobi  = new SateliteDataDto();
 		sateliteDataKenobi.setName("kenobi");
 		sateliteDataKenobi.setDistance(400);
 		String[ ] messagekenobi = {" ", "para", " ", " ", "de", " "};
 		sateliteDataKenobi.setMessage(messagekenobi);
 		
-		SateliteData sateliteDataSkywalker  = new SateliteData();
+		SateliteDataDto sateliteDataSkywalker  = new SateliteDataDto();
 		sateliteDataSkywalker.setName("skywalker");
 		sateliteDataSkywalker.setDistance(200);
 		String[ ] messageSkywalker = {"messaje", " ", " ", "prueba", " ", " "};
 		sateliteDataSkywalker.setMessage(messageSkywalker); 
 		
-		List<SateliteData> satelites = List.of(sateliteDataSato, sateliteDataKenobi, sateliteDataSkywalker);
+		List<SateliteDataDto> satelites = List.of(sateliteDataSato, sateliteDataKenobi, sateliteDataSkywalker);
 		
-		Response response = centerSrv.getLocationMessage(satelites);
+		ResponseTopsecretDto response = centerSrv.getLocationMessage(satelites);
 		
 		assertTrue(response.equals(expectedResponse));
 	}
@@ -75,7 +77,7 @@ public class ComunicationCenterImpleTest {
 	@Test
 	public void getLocationMessageSplitFailTest() {
 		
-		Response response = centerSrv.getLocationMessageSplit();
+		ResponseTopsecretDto response = centerSrv.getLocationMessageSplit();
 		
 		assertTrue(response == null);
 		
@@ -84,7 +86,7 @@ public class ComunicationCenterImpleTest {
 	@Test
 	public void setSateliteDataSato() {
 		
-		SateliteData sateliteDataSato = new SateliteData();
+		SateliteDataDto sateliteDataSato = new SateliteDataDto();
 		sateliteDataSato.setName("sato");
 		sateliteDataSato.setDistance(600);
 		String[ ] messagesato = {" ", " ", "la", " ", " ", "Meli"};
@@ -96,7 +98,7 @@ public class ComunicationCenterImpleTest {
 	@Test
 	public void setSateliteDatakenobi() {
 		
-		SateliteData sateliteDataKenobi  = new SateliteData();
+		SateliteDataDto sateliteDataKenobi  = new SateliteDataDto();
 		sateliteDataKenobi.setName("kenobi");
 		sateliteDataKenobi.setDistance(400);
 		String[ ] messagekenobi = {" ", "para", " ", " ", "de", " "};
@@ -107,7 +109,7 @@ public class ComunicationCenterImpleTest {
 	@Test
 	public void setSateliteDataskywalker() {
 		
-		SateliteData sateliteDataSkywalker  = new SateliteData();
+		SateliteDataDto sateliteDataSkywalker  = new SateliteDataDto();
 		sateliteDataSkywalker.setName("skywalker");
 		sateliteDataSkywalker.setDistance(200);
 		String[ ] messageSkywalker = {"messaje", " ", " ", "prueba", " ", " "};
@@ -118,9 +120,7 @@ public class ComunicationCenterImpleTest {
 	@Test
 	public void getLocationMessageSplitTest() {
 		
-	
-			
-		SateliteData sateliteDataSato = new SateliteData();
+		SateliteDataDto sateliteDataSato = new SateliteDataDto();
 		sateliteDataSato.setName("sato");
 		sateliteDataSato.setDistance(600);
 		String[ ] messagesato = {" ", " ", "la", " ", " ", "Meli"};
@@ -128,26 +128,22 @@ public class ComunicationCenterImpleTest {
 		centerSrv.setSateliteData(sateliteDataSato);
 
 		
-		SateliteData sateliteDataKenobi  = new SateliteData();
+		SateliteDataDto sateliteDataKenobi  = new SateliteDataDto();
 		sateliteDataKenobi.setName("kenobi");
 		sateliteDataKenobi.setDistance(400);
 		String[ ] messagekenobi = {" ", "para", " ", " ", "de", " "};
 		sateliteDataKenobi.setMessage(messagekenobi);
 		centerSrv.setSateliteData(sateliteDataKenobi);
 	
-		SateliteData sateliteDataSkywalker  = new SateliteData();
+		SateliteDataDto sateliteDataSkywalker  = new SateliteDataDto();
 		sateliteDataSkywalker.setName("skywalker");
 		sateliteDataSkywalker.setDistance(200);
 		String[ ] messageSkywalker = {"messaje", " ", " ", "prueba", " ", " "};
 		sateliteDataSkywalker.setMessage(messageSkywalker); 
 		centerSrv.setSateliteData(sateliteDataSkywalker);
-
-		
-		Response response = centerSrv.getLocationMessageSplit();
+		ResponseTopsecretDto response = centerSrv.getLocationMessageSplit();
 		
 		assertTrue(response != null);
 		
 	}
-	
-
 }

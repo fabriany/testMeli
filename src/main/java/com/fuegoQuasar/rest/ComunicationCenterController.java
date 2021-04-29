@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fuegoQuasar.Dto.RequestTopsecretDto;
+import com.fuegoQuasar.Dto.ResponseTopsecretDto;
+import com.fuegoQuasar.Dto.SateliteDataDto;
 import com.fuegoQuasar.aplication.ComunicationCenter;
-import com.fuegoQuasar.aplication.Response;
-import com.fuegoQuasar.aplication.SateliteData;
 
 @RestController
 public class ComunicationCenterController {
@@ -20,15 +21,15 @@ public class ComunicationCenterController {
 	private ComunicationCenter centerSrv;
 	
 	@PostMapping("topsecret")
-	public ResponseEntity<Response> topSecret(@RequestBody RequestDto resquest) {
+	public ResponseEntity<ResponseTopsecretDto> topSecret(@RequestBody RequestTopsecretDto resquest) {
 		
 		try {
 			
-			Response response = centerSrv.getLocationMessage(resquest.getSatelites());
+			ResponseTopsecretDto response = centerSrv.getLocationMessage(resquest.getSatelites());
 			if (response != null) {
-				return   new ResponseEntity<Response>(response, HttpStatus.OK);
+				return   new ResponseEntity<ResponseTopsecretDto>(response, HttpStatus.OK);
 			}			
-			return   new ResponseEntity<Response>(HttpStatus.NOT_FOUND);
+			return   new ResponseEntity<ResponseTopsecretDto>(HttpStatus.NOT_FOUND);
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -37,14 +38,14 @@ public class ComunicationCenterController {
 	}
 	
 	@GetMapping("topsecret_split")
-	public ResponseEntity<Response> getTopsecretSplit() {
+	public ResponseEntity<ResponseTopsecretDto> getTopsecretSplit() {
 				
 		try {
-			Response response = centerSrv.getLocationMessageSplit();
+			ResponseTopsecretDto response = centerSrv.getLocationMessageSplit();
 			if (response != null) {
-				return   new ResponseEntity<Response>(response, HttpStatus.OK);
+				return   new ResponseEntity<ResponseTopsecretDto>(response, HttpStatus.OK);
 			}
-			return   new ResponseEntity<Response>(HttpStatus.NOT_FOUND);
+			return   new ResponseEntity<ResponseTopsecretDto>(HttpStatus.NOT_FOUND);
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -53,7 +54,7 @@ public class ComunicationCenterController {
 	}
 	
 	@PostMapping("topsecret_split/{sateliteName}")
-	public ResponseEntity<String> postTopsecretSplit(@PathVariable("sateliteName") String sateliteName, @RequestBody SateliteData sateliteData) {
+	public ResponseEntity<String> postTopsecretSplit(@PathVariable("sateliteName") String sateliteName, @RequestBody SateliteDataDto sateliteData) {
 		
 		try {
 			sateliteData.setName(sateliteName);

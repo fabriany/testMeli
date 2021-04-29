@@ -1,9 +1,9 @@
-package com.fuegoQuasar.aplication;
+package com.fuegoQuasar.Dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fuegoQuasar.model.Position;
 
-public class Response {
+public class ResponseTopsecretDto {
 	
 	@JsonProperty("position")
 	private Position position;
@@ -11,7 +11,7 @@ public class Response {
 	@JsonProperty("message")
 	private String message;  
 	
-	public Response(Position position, String message) {
+	public ResponseTopsecretDto(Position position, String message) {
 		super();
 		this.position = position;
 		this.message = message;
@@ -31,7 +31,7 @@ public class Response {
 	}
 
 
-	 public boolean equals(Response response) {
+	 public boolean equals(ResponseTopsecretDto response) {
 		 
 		 if (this.position.x == response.position.x && this.position.y == response.position.y) {
 			if (this.message.equals(response.message)) {
