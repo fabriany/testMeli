@@ -2,6 +2,7 @@ package com.fuegoQuasar.aplication;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,11 @@ public class ComunicationCenterImpleTest {
 		String[ ] messageSkywalker = {" ", "es", " ", " ", "secreto"};
 		sateliteDataSkywalker.setMessage(messageSkywalker); 
 		
-		List<SateliteDataDto> satelites = List.of(sateliteDataSato, sateliteDataKenobi, sateliteDataSkywalker);
+		List<SateliteDataDto> satelites = new ArrayList<>();
+		satelites.add(sateliteDataSkywalker);
+		satelites.add(sateliteDataKenobi);
+		satelites.add(sateliteDataSato);
+		
 		
 		ResponseTopsecretDto response = centerSrv.getLocationMessage(satelites);
 		
@@ -67,7 +72,10 @@ public class ComunicationCenterImpleTest {
 		String[ ] messageSkywalker = {"messaje", " ", " ", "prueba", " ", " "};
 		sateliteDataSkywalker.setMessage(messageSkywalker); 
 		
-		List<SateliteDataDto> satelites = List.of(sateliteDataSato, sateliteDataKenobi, sateliteDataSkywalker);
+		List<SateliteDataDto> satelites = new ArrayList<>();
+		satelites.add(sateliteDataSkywalker);
+		satelites.add(sateliteDataKenobi);
+		satelites.add(sateliteDataSato);
 		
 		ResponseTopsecretDto response = centerSrv.getLocationMessage(satelites);
 		
